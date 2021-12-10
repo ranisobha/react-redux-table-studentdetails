@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {composeWithDevTools} from 'redux-devtools-extension'
+import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createStore } from 'redux';
+import Reducer from './redux/reducers/Reducer';
+import { Provider } from 'react-redux';
+
+const store = createStore(Reducer,composeWithDevTools())
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>  
+    <Router>  
     <App />
+    </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
